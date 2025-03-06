@@ -40,7 +40,7 @@ ADAM (Adaptive Moment Estimation) is an advanced gradient descent method combini
 
 The update rule for weights:
 
-\[ \theta_{t+1} = \theta_t - \frac{\alpha}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t \]
+$$ \theta_{t+1} = \theta_t - \frac{\alpha}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t $$
 
 where:
 - $\alpha$ = learning rate
