@@ -34,13 +34,25 @@ The network is structured as follows:
 ## ADAM Optimization
 ADAM (Adaptive Moment Estimation) is an advanced gradient descent method combining momentum and RMSprop. It updates parameters using:
 
-- **Moving averages of past gradients** ($m_t$)
-- **Moving averages of squared gradients** ($v_t$)
-- **Bias correction terms**
+- **Moving averages of past gradients** ($\vec m_t$)
+    - $\vec m_t = \beta_1 \vec m_{t-1}+(1-\beta_1)*\vec \delta_t $
 
-The update rule for weights:
+The idea here is to use exponential smoothing to cut down on noise in the loss in order to find global minimums rather than stochastic ones. 
 
-$$ \theta_{t+1} = \theta_t - \frac{\alpha}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t $$
+- **Moving averages of squared gradients** ($\vec v_t$)
+    - $\vec v_t = \beta_2 \vec v_{t-1}+(1-\beta_2)*\vec {\delta_t^2} $
+
+We include a 2nd order term (the square of the gradients) in the smoothing. 
+
+- **Bias correction terms**:
+    -  $\hat{m}_t= \frac{\vec m_t}{(1-\beta_1^{t+1})} $
+    -  $\hat{v}_t= \frac{\vec v_t}{(1-\beta_2^{t+1})} $
+
+the reason that we do this is that if we don't, the algorithm will get stuck at the initialization point,  $\vec 0$.  The bias correction forces the system away from this point.
+
+- The update rule for weights and biases ( $\alpha$ =  learning rate):
+    -  $\hat {v}'_i \equiv \sqrt{\hat{v}_i} $
+    -  $\theta_{t+1} = \theta_t - \frac{\alpha}{\hat{v'}_t + \epsilon} \hat{m}_t $
 
 where:
 - $\alpha$ = learning rate
@@ -120,7 +132,8 @@ int main() {
 
 ## How to Build and Run
 ### Prerequisites
-- **Visual Studio Code** with **MinGW-w64 (GCC 14.2.0)**
+- **Visual Studio**:
+    -  Microsoft (R) C/C++ Optimizing Compiler Version 19.41.34120 for x86
 - **Eigen library** (header-only, no installation required)
 - **C++17 or later**
 
