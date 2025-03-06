@@ -137,14 +137,6 @@ g++ -std=c++17 -I /path_to_eigen neural_net.cpp -o neural_net.exe
 
 ---
 
-## Future Improvements
-- Implement **batch normalization**
-- Add support for **dropout**
-- Expand to **CNNs for better image classification**
-- Optimize matrix operations with **BLAS/LAPACK**
-
----
-
 ## Author
 Christopher Glosser, PhD
 
