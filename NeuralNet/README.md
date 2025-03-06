@@ -104,10 +104,6 @@ g++ -std=c++17 -I /path_to_eigen neural_net.cpp -o neural_net.exe
 ---
 
 ## Author
-[Your Name]
+Christopher Glosser, PhD
 
----
-
-## License
-MIT License
 
