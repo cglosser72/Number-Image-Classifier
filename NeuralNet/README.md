@@ -50,7 +50,7 @@ We include a 2nd order term (the square of the gradients) in the smoothing.
 
 the reason that we do this is that if we don't, the algorithm will get stuck at the initialization point,  $\vec 0$.  The bias correction forces the system away from this point.
 
-- The update rule for weights and biases ( $\alpha$ =  learning rate):
+- The update rule for weights and biases:
     -  $\hat {v}'_i \equiv \sqrt{\hat{v}_i} $
     -  $\theta_{t+1} = \theta_t - \frac{\alpha}{\hat{v'}_t + \epsilon} \hat{m}_t $
 
